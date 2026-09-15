@@ -32,6 +32,7 @@
       --line: rgba(59,52,48,.10);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    html { overscroll-behavior-y: none; }   /* 당겨서 늘어나는(바운스) 효과 방지 */
     html, body { background: #efe6da; }
     body {
       color: var(--ink);
@@ -55,7 +56,7 @@
     .content { position: relative; z-index: 2; }
 
     /* ───────── 표지 ───────── */
-    .cover { position: relative; height: 100vh; min-height: 640px; max-height: 860px; overflow: hidden; }
+    .cover { position: relative; height: 100vh; height: var(--cover-h, 100svh); min-height: 640px; max-height: 860px; overflow: hidden; }
     .wash { position: absolute; z-index: 1; pointer-events: none; border-radius: 50%; }
     .wash-1 { width: 420px; height: 400px; left: -170px; top: -140px; background: radial-gradient(closest-side, rgba(255,205,180,.75), rgba(255,205,180,0)); }
     .wash-2 { width: 400px; height: 380px; right: -170px; bottom: -110px; background: radial-gradient(closest-side, rgba(205,228,180,.8), rgba(205,228,180,0)); }
@@ -586,6 +587,13 @@
   const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add('on')), { threshold: .12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
+
+  // 표지 높이 고정: 모바일에서 스크롤 중 주소창이 접히며 100vh가 변해 화면이 늘었다 줄었다 하는 현상 방지
+  (function(){
+    const lock = () => document.documentElement.style.setProperty('--cover-h', innerHeight + 'px');
+    lock();
+    addEventListener('orientationchange', () => setTimeout(lock, 300));
+  })();
 
   // 자동 스크롤: 표지에서 잠시 기다렸다가 천천히 내려감.
   // 손을 대면 즉시 멈추고(직접 넘기기 가능), 손을 뗀 뒤 RESUME 시간 동안 가만히 있으면 그 자리에서 다시 이어감.
