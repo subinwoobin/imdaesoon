@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>고희연(칠순)에 초대합니다</title>
+
+  <!-- 카카오톡 공유 미리보기 태그 -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="OOO 아버님(어머님) 고희연에 초대합니다" />
+  <meta property="og:description" content="2026년 O월 O일 (토) 오후 12시 / OOO호텔 OO홀" />
+  <meta property="og:image" content="https://subinwoobin.github.io/imdaesoon/images/og-thumb.jpg" />
+  <meta property="og:url" content="https://subinwoobin.github.io/imdaesoon/" />
+
+  <!-- 고급스러운 웹 폰트 불러오기 (고운바탕, 본고딕) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-paper: #faf8f5; /* 따뜻한 종이 질감 색상 */
+      --text-main: #2b2b2b;
+      --text-sub: #555555;
+      --point-gold: #b8905b; /* 고급스러운 금색 포인트 */
+      --point-navy: #1a2a3a; /* 세련된 네이비 */
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: #e9e4dc;
+      color: var(--text-main);
+      display: flex;
+      justify-content: center;
+      /* 전체 폰트를 우아한 명조체로 기본 설정 */
+      font-family: 'Gowun Batang', serif; 
+    }
+
+    /* 모바일 화면 컨테이너 */
+    .container {
+      width: 100%;
+      max-width: 440px;
+      min-height: 100vh;
+      background-color: var(--bg-paper);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* 상단 타이틀 영역 */
+    .header {
+      text-align: center;
+      padding: 60px 20px 40px;
+      position: relative;
+    }
+
+    .sub-title {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 13px;
+      letter-spacing: 4px;
+      color: var(--point-gold);
+      margin-bottom: 20px;
+    }
+
+    .main-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--point-navy);
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+
+    .main-title .name {
+      font-size: 32px;
+      color: var(--text-main);
+    }
+
+    /* 전통적인 선 장식 */
+    .divider {
+      width: 40px;
+      height: 1px;
+      background-color: var(--point-gold);
+      margin: 0 auto 20px;
+    }
+
+    .date-location {
+      font-size: 16px;
+      color: var(--text-sub);
+      line-height: 1.6;
+    }
+
+    /* 메인 이미지 영역 (부드러운 테두리 적용) */
+    .photo-wrapper {
+      margin: 0 24px 40px;
+      border-radius: 200px 200px 10px 10px; /* 아치형 디자인 */
+      overflow: hidden;
+      border: 3px solid #fff;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      background-color: #fff;
+    }
+
+    .photo-wrapper img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* 본문 섹션 */
+    .section {
+      padding: 40px 24px;
+      text-align: center;
+      background-image: linear-gradient(to bottom, transparent, rgba(184, 144, 91, 0.03), transparent);
+    }
+
+    .greeting-text {
+      font-size: 16px;
+      line-height: 2.2;
+      color: var(--text-main);
+      word-break: keep-all;
+    }
+
+    /* 가족 관계 */
+    .family-tree {
+      margin-top: 40px;
+      font-size: 15px;
+      line-height: 2;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-weight: 300;
+    }
+
+    .family-tree span {
+      color: var(--point-gold);
+      font-size: 13px;
+      margin-right: 5px;
+    }
+
+    .family-tree strong {
+      font-weight: 500;
+      color: var(--text-main);
+      margin-right: 15px;
+    }
+
+    /* 정보 영역 (일시, 장소) */
+    .info-box {
+      margin: 0 24px 40px;
+      padding: 30px 20px;
+      background: #fff;
+      border: 1px solid #efeae1;
+      border-radius: 12px;
+    }
+
+    .info-list {
+      list-style: none;
+      text-align: left;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    .info-list li {
+      margin-bottom: 16px;
+      display: flex;
+      font-size: 15px;
+      align-items: flex-start;
+    }
+
+    .info-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .info-label {
+      width: 50px;
+      color: var(--point-gold);
+      font-weight: 500;
+      flex-shrink: 0;
+    }
+
+    .info-desc {
+      color: var(--text-main);
+      line-height: 1.5;
+      font-weight: 300;
+    }
+
+    .info-desc strong {
+      font-weight: 500;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* 버튼 영역 (둥글고 세련되게) */
+    .nav-btn-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 25px;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+      border-radius: 30px; /* 둥근 버튼 */
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .btn-kakao {
+      background-color: #fee500;
+      color: #191919;
+    }
+
+    .btn-naver {
+      background-color: #03c75a;
+      color: #fff;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: #999;
+      padding: 40px 20px;
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #f4f1eb;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  
+  <!-- 상단 타이틀 -->
+  <header class="header">
+    <p class="sub-title">INVITATION</p>
+    <h1 class="main-title">
+      <span class="name">홍길동</span> 아버님의<br>고희연에 초대합니다
+    </h1>
+    <div class="divider"></div>
+    <p class="date-location">
+      2026년 O월 O일 토요일 오후 12시<br>
+      OO컨벤션 2층 에메랄드홀
+    </p>
+  </header>
+
+  <!-- 대표 사진 (아치형 프레임) -->
+  <div class="photo-wrapper">
+    <img src="images/main-photo.jpg" alt="부모님 사진" />
+  </div>
+
+  <!-- 모시는 글 -->
+  <section class="section">
+    <p class="greeting-text">
+      꽃길만 걸으시길 바라는 마음으로<br>
+      아버님의 일흔 번째 생신을 맞이하여<br>
+      가족과 친지, 소중한 분들을 모시고<br>
+      작은 축하의 자리를 마련하였습니다.<br><br>
+      바쁘시더라도 부디 참석하시어<br>
+      자리를 빛내주시면 감사하겠습니다.
+    </p>
+
+    <!-- 가족 관계 -->
+    <div class="family-tree">
+      <p>
+        <span>장남</span><strong>홍일동</strong>
+        <span>며느리</span><strong>김영희</strong>
+      </p>
+      <p>
+        <span>장녀</span><strong>홍이동</strong>
+        <span>사위</span><strong>박철수</strong>
+      </p>
+    </div>
+  </section>
+
+  <!-- 오시는 길 -->
+  <div class="info-box">
+    <ul class="info-list">
+      <li>
+        <span class="info-label">일시</span>
+        <span class="info-desc">
+          <strong>2026년 O월 O일 (토) 오후 12:00</strong>
+        </span>
+      </li>
+      <li>
+        <span class="info-label">장소</span>
+        <span class="info-desc">
+          <strong>OO컨벤션 2층 에메랄드홀</strong>
+          서울시 OO구 OO로 123
+        </span>
+      </li>
+      <li>
+        <span class="info-label">문의</span>
+        <span class="info-desc">
+          <a href="tel:010-1234-5678" style="color:inherit; text-decoration:none;">010-1234-5678 (홍일동)</a>
+        </span>
+      </li>
+    </ul>
+
+    <!-- 내비게이션 길찾기 버튼 -->
+    <div class="nav-btn-group">
+      <a href="https://map.kakao.com/link/to/OO컨벤션,37.12345,127.12345" target="_blank" class="btn btn-kakao">
+        카카오맵 길찾기
+      </a>
+      <a href="https://map.naver.com/v5/search/OO컨벤션" target="_blank" class="btn btn-naver">
+        네이버 지도 보기
+      </a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    감사합니다. 마음으로 축하해 주셔도 큰 기쁨이 됩니다.
+  </footer>
+
+</div>
+
+</body>
+</html>
