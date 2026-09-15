@@ -86,10 +86,12 @@
       position: absolute; right: 30px; top: 88px; width: 46px; height: 46px; z-index: 5;
       transform: rotate(-6deg);
     }
-    .scroll-hint { position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%); z-index: 5;
-      font-family: 'Noto Sans KR', sans-serif; font-size: 10px; letter-spacing: 3px; color: var(--ink-3);
-      animation: bob 2s ease-in-out infinite; }
-    @keyframes bob { 0%,100%{ transform: translate(-50%,0);} 50%{ transform: translate(-50%,6px);} }
+    .scroll-hint { position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%); z-index: 5;
+      display: flex; align-items: center; gap: 8px; padding: 9px 16px 9px 18px; border-radius: 30px;
+      background: rgba(255,252,246,.92); border: 1px solid rgba(31,29,26,.18); box-shadow: 0 4px 14px rgba(0,0,0,.14);
+      font-family: 'Noto Sans KR', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 1px; color: var(--ink); white-space: nowrap; }
+    .scroll-hint svg { width: 14px; height: 14px; animation: bob 1.6s ease-in-out infinite; }
+    @keyframes bob { 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(5px);} }
 
     /* 떨어지는 꽃잎 */
     .petals { position: absolute; inset: 0; z-index: 2; pointer-events: none; overflow: hidden; }
@@ -398,7 +400,7 @@
       </div>
 
       <svg class="mountains" viewBox="0 40 440 160" preserveAspectRatio="none" aria-hidden="true"><use href="#mountainsG"/></svg>
-      <div class="scroll-hint">SCROLL</div>
+      <div class="scroll-hint">아래로 넘겨 보세요<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 5 L7 10 L12 5" fill="none" stroke="var(--red)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
     </section>
 
     <!-- ───── 사진 ───── -->
