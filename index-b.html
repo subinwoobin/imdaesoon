@@ -585,28 +585,37 @@
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
 
-  // 자동 스크롤: 표지에서 3초 기다렸다가 천천히 내려감. 사용자가 화면을 만지면 즉시 멈춤.
+  // 자동 스크롤: 표지에서 잠시 기다렸다가 천천히 내려감.
+  // 손을 대면 즉시 멈추고(직접 넘기기 가능), 손을 뗀 뒤 RESUME 시간 동안 가만히 있으면 그 자리에서 다시 이어감.
   (function(){
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const SPEED = 38;          // 초당 픽셀 (숫자를 줄이면 더 느려짐)
-    const START_DELAY = 3000;  // 시작 전 대기(ms)
-    let running = false, last = 0, pos = 0, raf = 0;
-    const stop = () => { running = false; cancelAnimationFrame(raf); };
-    ['touchstart','wheel','pointerdown','keydown'].forEach(ev => addEventListener(ev, stop, { passive: true }));
+    const SPEED = 55;          // 초당 픽셀
+    const START_DELAY = 2500;  // 처음 시작 전 대기(ms)
+    const RESUME = 4000;       // 손 뗀 뒤 다시 시작까지 대기(ms)
+    let running = false, last = 0, pos = 0, raf = 0, timer = 0, touching = false, done = false;
+    const maxY = () => document.documentElement.scrollHeight - innerHeight;
+    function stop(){ running = false; cancelAnimationFrame(raf); }
+    function start(){
+      if (done || running || touching) return;
+      pos = window.scrollY; if (pos >= maxY() - 2) { done = true; return; }
+      running = true; last = performance.now(); raf = requestAnimationFrame(step);
+    }
     function step(t){
       if (!running) return;
       const dt = Math.min(64, t - last); last = t;
       pos += SPEED * dt / 1000;
-      const max = document.documentElement.scrollHeight - innerHeight;
-      if (pos >= max) { window.scrollTo(0, max); stop(); return; }
+      if (pos >= maxY()) { window.scrollTo(0, maxY()); stop(); done = true; return; }
       window.scrollTo(0, pos);
       raf = requestAnimationFrame(step);
     }
-    setTimeout(() => {
-      if (window.scrollY > 10) return;   // 이미 직접 넘긴 경우
-      running = true; pos = window.scrollY; last = performance.now();
-      raf = requestAnimationFrame(step);
-    }, START_DELAY);
+    function pause(){ stop(); clearTimeout(timer); timer = setTimeout(start, RESUME); }
+    addEventListener('touchstart', () => { touching = true; stop(); clearTimeout(timer); }, { passive: true });
+    addEventListener('touchend',   () => { touching = false; pause(); }, { passive: true });
+    addEventListener('touchcancel',() => { touching = false; pause(); }, { passive: true });
+    ['wheel','pointerdown','keydown'].forEach(ev => addEventListener(ev, pause, { passive: true }));
+    // 사용자가 직접 스크롤 중이면(자동이 아닌 이동) 잠시 멈춤
+    addEventListener('scroll', () => { if (!running) pause(); }, { passive: true });
+    setTimeout(start, START_DELAY);
   })();
 
   // 유틸
