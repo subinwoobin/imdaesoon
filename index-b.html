@@ -8,7 +8,7 @@
   <!-- 카카오톡 공유 미리보기 태그 -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="임대순 아버님 고희연에 초대합니다" />
-  <meta property="og:description" content="2026년 10월 3일 (토) 오후 5시 / 경복궁 한옥마을점 (인천 송도)" />
+  <meta property="og:description" content="2026년 10월 3일 (토) 오후 5시 / 경복궁 한옥마을점 영빈관 (인천 송도)" />
   <meta property="og:image" content="https://subinwoobin.github.io/imdaesoon/images/og-thumb-b.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -156,6 +156,8 @@
     .info-row .v { font-size: 15px; color: var(--ink); line-height: 1.6; font-weight: 300; }
     .info-row .v strong { font-weight: 500; display: block; }
     .info-row .v a { color: inherit; text-decoration: none; }
+    .info-row .v .pk { position: relative; padding-left: 12px; line-height: 1.7; word-break: keep-all; }
+    .info-row .v .pk::before { content: ''; position: absolute; left: 0; top: 11px; width: 4px; height: 4px; border-radius: 50%; background: var(--gold); }
     .info-row .v .tel { display: flex; justify-content: space-between; gap: 12px; padding: 4px 0; }
     .info-row .v .tel span { color: var(--ink-3); font-size: 13px; }
     .btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 24px; }
@@ -414,7 +416,7 @@
             <div class="w-sub">소중한 분들을 모십니다</div>
           </div>
         </div>
-        <p class="cover-date"><strong id="c-date">2026년 10월 3일 토요일</strong> <span id="c-time">오후 5시</span><br><span id="c-place">경복궁 한옥마을점 (인천 송도)</span></p>
+        <p class="cover-date"><strong id="c-date">2026년 10월 3일 토요일</strong> <span id="c-time">오후 5시</span><br><span id="c-place">경복궁 한옥마을점 영빈관 (인천 송도)</span></p>
       </div>
       <div class="scroll-hint">아래로 넘겨 보세요<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 5 L7 10 L12 5" fill="none" stroke="var(--red)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
     </section>
@@ -484,7 +486,8 @@
       <h2 class="h2">오시는 길</h2>
       <div class="info-card">
         <div class="info-row"><div class="k">일시</div><div class="v"><strong id="i-date">2026년 10월 3일 (토) 오후 05:00</strong></div></div>
-        <div class="info-row"><div class="k">장소</div><div class="v"><strong id="i-place">경복궁 한옥마을점</strong><span id="i-addr">인천 연수구 테크노파크로 180<br>(송도 한옥마을)</span></div></div>
+        <div class="info-row"><div class="k">장소</div><div class="v"><strong id="i-place">경복궁 한옥마을점 (영빈관)</strong><span id="i-addr">인천 연수구 테크노파크로 180<br>(송도 한옥마을)</span></div></div>
+        <div class="info-row"><div class="k">주차</div><div class="v" id="i-parking"></div></div>
         <div class="info-row"><div class="k">문의</div><div class="v" id="i-tels"></div></div>
         <div class="btns">
           <a id="m-kakao" href="#" target="_blank" class="btn btn-kakao">카카오맵</a>
@@ -513,7 +516,7 @@
     name:  '임대순',                          // 부모님 성함
     title: '아버님',                         // 아버님 / 어머님
     date:  '2026-10-03T17:00:00+09:00',       // 잔치 일시
-    place: '경복궁 한옥마을점',
+    place: '경복궁 한옥마을점 (영빈관)',
     addr:  '인천 연수구 테크노파크로 180\n(송도 한옥마을)',   // \n = 줄바꿈
     contacts: [                             // 문의처
       ['장녀 임현정', '010-9027-2879'],
@@ -521,6 +524,11 @@
       ['막내딸 임현경', '010-4680-8609'],
     ],
     mapQuery: '경복궁 한옥마을점',            // 지도 앱 검색어
+    parking: [                              // 주차 안내 (줄 단위)
+      '한옥마을 주차장을 이용해 주세요.',
+      '식당 앞에서 발렛 주차가 가능합니다.',
+      '만차 시 주차요원의 안내에 따라 주차해 주세요.',
+    ],
   };
   /* ==================================== */
 
@@ -536,12 +544,13 @@
   document.getElementById('c-name').textContent = EVENT.name;
   document.getElementById('c-date').textContent = `${y}년 ${m+1}월 ${day}일 ${w}요일`;
   document.getElementById('c-time').textContent = timeStr;
-  document.getElementById('c-place').textContent = EVENT.place;
+  document.getElementById('c-place').textContent = EVENT.place.replace(' (영빈관)',' 영빈관') + ' (인천 송도)';
   document.getElementById('d-big').textContent = `${y}.${String(m+1).padStart(2,'0')}.${String(day).padStart(2,'0')}`;
   document.getElementById('d-sub').textContent = `${w}요일 ${timeStr}`;
   document.getElementById('i-date').textContent = `${y}년 ${m+1}월 ${day}일 (${w}) ${timeStr2}`;
   document.getElementById('i-place').textContent = EVENT.place;
   document.getElementById('i-addr').innerHTML = EVENT.addr.replace(/\n/g,'<br>');
+  document.getElementById('i-parking').innerHTML = EVENT.parking.map(t => `<div class="pk">${t}</div>`).join('');
   document.getElementById('i-tels').innerHTML = EVENT.contacts.map(([n,p]) => `<a href="tel:${p}" class="tel"><span>${n}</span>${p}</a>`).join('');
   const q = encodeURIComponent(EVENT.mapQuery);
   document.getElementById('m-kakao').href = `https://map.kakao.com/link/search/${q}`;
