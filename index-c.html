@@ -93,7 +93,7 @@
     .bloom { position: absolute; z-index: 3; pointer-events: none; filter: drop-shadow(0 6px 10px rgba(120,60,70,.12)); }
     .cover .bloom-tl { width: 80%; max-width: 350px; left: -13%; top: -4%; transform: rotate(-10deg); }
     .cover .bloom-tr { width: 38%; max-width: 170px; right: -4%; top: 6%; transform: rotate(12deg); opacity: .96; }
-    .page2 .bloom-r { width: 44%; max-width: 200px; right: -14%; top: -30px; transform: rotate(20deg); opacity: .95; }
+    .page2 .bloom-r { width: 30%; max-width: 135px; right: -8px; top: 4px; transform: rotate(196deg); opacity: .95; }
     .photo-bloom { position: absolute; width: 120px; z-index: 3; pointer-events: none; }
     .photo-bloom.a { right: -46px; top: -40px; transform: rotate(-10deg); }
     .photo-bloom.b { left: -50px; bottom: -34px; width: 100px; transform: rotate(160deg); }
@@ -106,7 +106,7 @@
     .page2 .lp4 { right: 60px; top: 40px; width: 22px; }
     .page2 .lp5 { right: 24px; bottom: 120px; width: 22px; }
     .page2 > .greet, .page2 > .venue-name, .page2 > .info, .page2 > .btns { position: relative; z-index: 2; }
-    .greet { font-family: 'Nanum Myeongjo', serif; font-size: 15.5px; line-height: 2.1; padding-right: 10px; padding-top: 30px; color: #2a2723; word-break: keep-all; }
+    .greet { font-family: 'Nanum Myeongjo', serif; font-size: 15.5px; line-height: 2.1; padding-right: 10px; padding-top: 132px; color: #2a2723; word-break: keep-all; }
     .greet em { font-style: normal; color: var(--red); font-weight: 700; }
     .venue-name { margin-top: 34px; font-family: 'HanseokbongB', serif; font-size: 25px; font-weight: 400; color: #1c1a17; }
     .info { margin-top: 12px; font-family: 'Noto Sans KR', sans-serif; font-size: 14.5px; line-height: 1.8; color: #2a2723; }
@@ -507,11 +507,26 @@
       <div class="scroll-hint">아래로 넘겨 보세요<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 5 L7 10 L12 5" fill="none" stroke="var(--red)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
     </section>
 
-    <!-- ───── 두 번째 장: 모시는 글 + 약도 + 안내 (샘플 우측) ───── -->
+    <!-- ───── 사진 ───── -->
+    <section class="section reveal">
+      <p class="eyebrow">CELEBRATION</p>
+      <svg class="orn" viewBox="0 0 120 20"><use href="#orn"/></svg>
+      <div class="photo-wrap">
+        <svg class="photo-ring" viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="47" fill="none" stroke="#2f2a25" stroke-width="1.6" stroke-dasharray="180 40 60 20" stroke-linecap="round" opacity=".7"/>
+          <circle cx="50" cy="50" r="49" fill="none" stroke="#a98a4f" stroke-width=".6" opacity=".7"/>
+        </svg>
+        <img class="photo-bloom a" src="images/blossom.webp" alt="" aria-hidden="true"><img class="photo-bloom b" src="images/blossom.webp" alt="" aria-hidden="true">
+        <img class="photo" src="images/main-photo.jpg" alt="부모님 사진" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="photo-fallback">images/main-photo.jpg<br>사진을 넣어주세요</div>
+      </div>
+      <p class="photo-caption">일흔 해, 고맙고 또 고맙습니다</p>
+    </section>
+
     <section class="page2 reveal">
       <div class="wm" aria-hidden="true"><span>지</span><span>은</span><span>하</span><span>구</span><span>양</span><span>제</span><span>늘</span><span>다</span><span>솔</span><span>네</span><span>오</span><span>경</span><span>주</span><span>는</span><span>항</span></div>
       <svg class="mountains" viewBox="0 40 440 160" preserveAspectRatio="none" aria-hidden="true"><use href="#mountainsG"/></svg>
-      <img class="bloom bloom-r" src="images/blossom.webp" alt="" aria-hidden="true">
+      <img class="bloom bloom-r" src="images/sprig2.webp" alt="" aria-hidden="true">
       <svg class="cloud cl3" viewBox="0 0 120 60" aria-hidden="true"><use href="#cloudG"/></svg>
 
       <p class="greet">
@@ -536,22 +551,6 @@
         <a id="m-tmap" href="#" target="_blank" class="btn btn-tmap">티맵 길찾기</a>
         <button type="button" class="btn btn-share" onclick="copyText(EVENT.addr.replace(/\n/g,' '),'주소가 복사되었습니다')">주소 복사</button>
       </div>
-    </section>
-
-    <!-- ───── 사진 ───── -->
-    <section class="section reveal">
-      <p class="eyebrow">CELEBRATION</p>
-      <svg class="orn" viewBox="0 0 120 20"><use href="#orn"/></svg>
-      <div class="photo-wrap">
-        <svg class="photo-ring" viewBox="0 0 100 100" aria-hidden="true">
-          <circle cx="50" cy="50" r="47" fill="none" stroke="#2f2a25" stroke-width="1.6" stroke-dasharray="180 40 60 20" stroke-linecap="round" opacity=".7"/>
-          <circle cx="50" cy="50" r="49" fill="none" stroke="#a98a4f" stroke-width=".6" opacity=".7"/>
-        </svg>
-        <img class="photo-bloom a" src="images/blossom.webp" alt="" aria-hidden="true"><img class="photo-bloom b" src="images/blossom.webp" alt="" aria-hidden="true">
-        <img class="photo" src="images/main-photo.jpg" alt="부모님 사진" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="photo-fallback">images/main-photo.jpg<br>사진을 넣어주세요</div>
-      </div>
-      <p class="photo-caption">일흔 해, 고맙고 또 고맙습니다</p>
     </section>
 
     <!-- ───── 일시 ───── -->
