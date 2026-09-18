@@ -59,7 +59,7 @@
     .content { position: relative; z-index: 2; }
 
     /* ───────── 표지 (샘플 분석: 밝은 한지, 좌상단 매화, 중앙 옅은 먹 원, 붓글씨 2줄, 하단 워터마크) ───────── */
-    .cover { position: relative; height: 100vh; height: var(--cover-h, 100svh); min-height: 660px; max-height: 900px; overflow: hidden; }
+    .cover { position: relative; min-height: 100vh; min-height: var(--cover-h, 100svh); overflow: hidden; }
     .plum { position: absolute; top: -22px; left: -40px; width: 330px; height: auto; z-index: 3; }
     .cloud { position: absolute; z-index: 2; opacity: .75; }
     .cover .cl1 { right: 10px; top: 45%; width: 104px; }
@@ -75,24 +75,25 @@
     .wm span { flex: 0 0 auto; }
     .wm span:nth-child(odd) { transform: translateY(8px); }
 
-    .cover-inner { position: absolute; inset: 0; z-index: 4; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 24px; }
-    .wash-wrap { position: relative; width: 76vw; max-width: 330px; aspect-ratio: 1; margin-top: 21vh; display: flex; align-items: center; justify-content: center; }
+    .cover-inner { position: relative; z-index: 4; box-sizing: border-box; min-height: var(--cover-h, 100svh); display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 24px 96px; }
+    .wash-wrap { position: relative; width: 76%; max-width: 330px; aspect-ratio: 1; margin-top: calc(var(--cover-h, 100svh) * .18); display: flex; align-items: center; justify-content: center; }
     .wash { position: absolute; inset: -6%; width: 112%; height: 112%; }
     .title { position: relative; font-family: 'HanseokbongB', 'Nanum Brush Script', serif; color: #1c1a17; line-height: 1.18; letter-spacing: 0; }
-    .title .t1 { display: block; font-size: min(46px, 11vw); }
+    .title .t1 { display: block; font-size: 46px; }
     .title .t1 b { font-weight: 400; }
-    .title .t2 { display: block; font-size: min(40px, 9.6vw); margin-top: 6px; white-space: nowrap; }
-    .venue { margin-top: 4.5vh; font-family: 'HanseokbongR', serif; font-size: min(27px, 6.6vw); line-height: 1.2; color: #1c1a17; white-space: nowrap; }
-    .when  { margin-top: 6px; font-family: 'HanseokbongR', serif; font-size: min(24px, 5.9vw); line-height: 1.2; color: #1c1a17; white-space: nowrap; }
-    .fam { margin-top: 3.4vh; display: grid; grid-template-columns: max-content max-content; column-gap: 26px; row-gap: 6px; font-family: 'Noto Sans KR', sans-serif; }
+    .title .t2 { display: block; font-size: 40px; margin-top: 6px; white-space: nowrap; }
+    .venue { margin-top: 32px; font-family: 'HanseokbongR', serif; font-size: 27px; line-height: 1.2; color: #1c1a17; white-space: nowrap; }
+    .when  { margin-top: 6px; font-family: 'HanseokbongR', serif; font-size: 24px; line-height: 1.2; color: #1c1a17; white-space: nowrap; }
+    .fam { margin-top: 24px; display: grid; grid-template-columns: max-content max-content; column-gap: 26px; row-gap: 6px; font-family: 'Noto Sans KR', sans-serif; }
     .fam div { display: flex; align-items: baseline; gap: 8px; white-space: nowrap; }
     .fam span { font-size: 13px; color: #6a635a; width: 44px; text-align: right; flex-shrink: 0; }
     .fam b { font-size: 18px; font-weight: 700; color: #1c1a17; }
 
+    @media (max-width: 400px) { .title .t1 { font-size: 11vw; } .title .t2 { font-size: 9.6vw; } .venue { font-size: 6.6vw; } .when { font-size: 5.9vw; } }
     .bloom { position: absolute; z-index: 3; pointer-events: none; filter: drop-shadow(0 6px 10px rgba(120,60,70,.12)); }
-    .cover .bloom-tl { width: 80vw; max-width: 350px; left: -13vw; top: -5vh; transform: rotate(-10deg); }
-    .cover .bloom-tr { width: 38vw; max-width: 170px; right: -4vw; top: 6vh; transform: rotate(12deg); opacity: .96; }
-    .page2 .bloom-r { width: 44vw; max-width: 200px; right: -14vw; top: -30px; transform: rotate(20deg); opacity: .95; }
+    .cover .bloom-tl { width: 80%; max-width: 350px; left: -13%; top: -4%; transform: rotate(-10deg); }
+    .cover .bloom-tr { width: 38%; max-width: 170px; right: -4%; top: 6%; transform: rotate(12deg); opacity: .96; }
+    .page2 .bloom-r { width: 44%; max-width: 200px; right: -14%; top: -30px; transform: rotate(20deg); opacity: .95; }
     .photo-bloom { position: absolute; width: 120px; z-index: 3; pointer-events: none; }
     .photo-bloom.a { right: -46px; top: -40px; transform: rotate(-10deg); }
     .photo-bloom.b { left: -50px; bottom: -34px; width: 100px; transform: rotate(160deg); }
@@ -701,9 +702,11 @@
 
   // 표지 높이 고정: 모바일에서 스크롤 중 주소창이 접히며 100vh가 변해 화면이 늘었다 줄었다 하는 현상 방지
   (function(){
-    const lock = () => document.documentElement.style.setProperty('--cover-h', innerHeight + 'px');
+    const lock = () => document.documentElement.style.setProperty('--cover-h', Math.max(660, Math.min(innerHeight, 900)) + 'px');
     lock();
     addEventListener('orientationchange', () => setTimeout(lock, 300));
+    // PC(마우스 환경)에서는 창 크기가 바뀌면 다시 계산 (모바일은 주소창 때문에 resize를 무시)
+    if (matchMedia('(hover: hover) and (pointer: fine)').matches) addEventListener('resize', lock);
   })();
 
   // 자동 스크롤: 표지에서 잠시 기다렸다가 천천히 내려감.

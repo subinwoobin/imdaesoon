@@ -56,7 +56,7 @@
     .content { position: relative; z-index: 2; }
 
     /* ───────── 표지 ───────── */
-    .cover { position: relative; height: 100vh; height: var(--cover-h, 100svh); min-height: 640px; max-height: 860px; overflow: hidden; }
+    .cover { position: relative; min-height: 100vh; min-height: var(--cover-h, 100svh); overflow: hidden; }
     .wash { position: absolute; z-index: 1; pointer-events: none; border-radius: 50%; }
     .wash-1 { width: 420px; height: 400px; left: -170px; top: -140px; background: radial-gradient(closest-side, rgba(255,205,180,.75), rgba(255,205,180,0)); }
     .wash-2 { width: 400px; height: 380px; right: -170px; bottom: -110px; background: radial-gradient(closest-side, rgba(205,228,180,.8), rgba(205,228,180,0)); }
@@ -64,9 +64,9 @@
     .corner-tl { left: -6px; top: -6px; }
     .corner-br { right: -6px; bottom: -6px; }
     .cover-inner {
-      position: absolute; inset: 0; z-index: 4;
+      position: relative; z-index: 4; box-sizing: border-box; min-height: var(--cover-h, 100svh);
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      text-align: center; padding: 0 20px;
+      text-align: center; padding: 0 20px 96px;
     }
     .wreath-wrap { position: relative; width: 320px; height: 320px; margin: 14px 0 10px; }
     .wreath { width: 100%; height: 100%; }
@@ -658,9 +658,11 @@
 
   // 표지 높이 고정: 모바일에서 스크롤 중 주소창이 접히며 100vh가 변해 화면이 늘었다 줄었다 하는 현상 방지
   (function(){
-    const lock = () => document.documentElement.style.setProperty('--cover-h', innerHeight + 'px');
+    const lock = () => document.documentElement.style.setProperty('--cover-h', Math.max(640, Math.min(innerHeight, 860)) + 'px');
     lock();
     addEventListener('orientationchange', () => setTimeout(lock, 300));
+    // PC(마우스 환경)에서는 창 크기가 바뀌면 다시 계산 (모바일은 주소창 때문에 resize를 무시)
+    if (matchMedia('(hover: hover) and (pointer: fine)').matches) addEventListener('resize', lock);
   })();
 
   // 자동 스크롤: 표지에서 잠시 기다렸다가 천천히 내려감.
