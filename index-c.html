@@ -9,23 +9,27 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="임대순 아버님 고희연에 초대합니다" />
   <meta property="og:description" content="2026년 10월 4일 (일) 오후 5시 / 경복궁 한옥마을점 영빈관 (인천 송도)" />
-  <meta property="og:image" content="https://subinwoobin.github.io/imdaesoon/images/og-thumb.jpg" />
+  <meta property="og:image" content="https://subinwoobin.github.io/imdaesoon/images/og-thumb-c.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:url" content="https://subinwoobin.github.io/imdaesoon/" />
+  <meta property="og:url" content="https://subinwoobin.github.io/imdaesoon/index-c.html" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Sans+KR:wght@300;400;500&family=Noto+Serif+KR:wght@600;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&family=Nanum+Pen+Script&family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@600;900&display=swap" rel="stylesheet">
 
   <style>
+
+    @font-face { font-family: 'HanseokbongB'; src: url('fonts/GapyeongHanseokbongB.woff2') format('woff2'); font-display: swap; }
+    @font-face { font-family: 'HanseokbongR'; src: url('fonts/GapyeongHanseokbongR.woff2') format('woff2'); font-display: swap; }
+    @font-face { font-family: 'NanumBrushLocal'; src: url('fonts/NanumBrush.woff2') format('woff2'); font-display: swap; }
     :root {
-      --paper: #f6f1e7;
-      --paper-2: #efe8da;
+      --paper: #f5f0e4;
+      --paper-2: #ece5d5;
       --ink: #1f1d1a;
       --ink-2: #4a4640;
       --ink-3: #8a847a;
-      --red: #b7302c;
+      --red: #b8474f;
       --red-2: #d9534f;
       --gold: #a98a4f;
       --line: rgba(31,29,26,.12);
@@ -54,39 +58,66 @@
     }
     .content { position: relative; z-index: 2; }
 
-    /* ───────── 표지 ───────── */
-    .cover { position: relative; height: 100vh; height: var(--cover-h, 100svh); min-height: 640px; max-height: 860px; overflow: hidden; }
-    .plum { position: absolute; top: -18px; left: -36px; width: 350px; height: auto; z-index: 3; }
-    .bird-r { position: absolute; right: 18px; bottom: 150px; width: 84px; z-index: 3; }
-    .mountains { position: absolute; left: 0; right: 0; bottom: -2px; width: 100%; height: auto; z-index: 1; }
+    /* ───────── 표지 (샘플 분석: 밝은 한지, 좌상단 매화, 중앙 옅은 먹 원, 붓글씨 2줄, 하단 워터마크) ───────── */
+    .cover { position: relative; height: 100vh; height: var(--cover-h, 100svh); min-height: 660px; max-height: 900px; overflow: hidden; }
+    .plum { position: absolute; top: -22px; left: -40px; width: 330px; height: auto; z-index: 3; }
+    .cloud { position: absolute; z-index: 2; opacity: .75; }
+    .cover .cl1 { right: 10px; top: 45%; width: 104px; }
+    .cover .cl2 { left: 8px; top: 27%; width: 88px; transform: scaleX(-1); }
+    .loose { position: absolute; z-index: 3; width: 26px; height: 26px; }
+    .cover .lp1 { right: 78px; top: 14%; width: 22px; }
+    .cover .lp2 { right: 34px; top: 63%; width: 24px; }
+    .cover .lp3 { left: 40px; top: 30%; width: 16px; }
+    .mountains { position: absolute; left: 0; right: 0; bottom: 8%; width: 100%; height: auto; z-index: 1; opacity: .35; }
+    .wm { position: absolute; left: -6px; right: -6px; bottom: -10px; height: 24%; z-index: 0; pointer-events: none; overflow: hidden;
+      display: flex; flex-wrap: wrap; align-content: flex-end; gap: 0 4px;
+      font-family: 'HanseokbongB', 'Nanum Myeongjo', serif; font-weight: 400; font-size: 46px; line-height: 1.05; color: #7a7367; opacity: .09; }
+    .wm span { flex: 0 0 auto; }
+    .wm span:nth-child(odd) { transform: translateY(8px); }
 
-    .cover-inner {
-      position: absolute; inset: 0; z-index: 4;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      text-align: center; padding: 0 28px;
-    }
-    .hanja-wrap { position: relative; margin-top: 110px; }
-    .ink-blot { position: absolute; left: 50%; top: 50%; width: 230px; height: 230px; transform: translate(-50%,-52%); z-index: -1; }
-    .hanja {
-      font-family: 'Noto Serif KR', serif; font-weight: 900;
-      font-size: 74px; letter-spacing: 10px; line-height: 1;
-      color: var(--ink);
-      text-shadow: 0 1px 0 rgba(255,255,255,.4);
-    }
-    .hanja small { display: block; font-family: 'Noto Sans KR', sans-serif; font-size: 11px; letter-spacing: 8px; color: var(--red); font-weight: 500; margin-top: 14px; }
-    .brush {
-      font-family: 'Nanum Brush Script', cursive;
-      font-size: 40px; line-height: 1.25; color: var(--ink); margin-top: 34px;
-    }
-    .brush b { font-weight: 400; font-size: 46px; }
-    .cover-date {
-      margin-top: 26px; font-size: 15px; letter-spacing: 1px; color: var(--ink-2); line-height: 1.8;
-    }
-    .cover-date strong { font-weight: 800; color: var(--ink); }
-    .seal {
-      position: absolute; right: 30px; top: 88px; width: 46px; height: 46px; z-index: 5;
-      transform: rotate(-6deg);
-    }
+    .cover-inner { position: absolute; inset: 0; z-index: 4; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 24px; }
+    .wash-wrap { position: relative; width: 76vw; max-width: 330px; aspect-ratio: 1; margin-top: 21vh; display: flex; align-items: center; justify-content: center; }
+    .wash { position: absolute; inset: -6%; width: 112%; height: 112%; }
+    .title { position: relative; font-family: 'HanseokbongB', 'Nanum Brush Script', serif; color: #1c1a17; line-height: 1.18; letter-spacing: 0; }
+    .title .t1 { display: block; font-size: min(46px, 11vw); }
+    .title .t1 b { font-weight: 400; }
+    .title .t2 { display: block; font-size: min(40px, 9.6vw); margin-top: 6px; white-space: nowrap; }
+    .venue { margin-top: 4.5vh; font-family: 'HanseokbongR', serif; font-size: min(27px, 6.6vw); line-height: 1.2; color: #1c1a17; white-space: nowrap; }
+    .when  { margin-top: 6px; font-family: 'HanseokbongR', serif; font-size: min(24px, 5.9vw); line-height: 1.2; color: #1c1a17; white-space: nowrap; }
+    .fam { margin-top: 3.4vh; display: grid; grid-template-columns: max-content max-content; column-gap: 26px; row-gap: 6px; font-family: 'Noto Sans KR', sans-serif; }
+    .fam div { display: flex; align-items: baseline; gap: 8px; white-space: nowrap; }
+    .fam span { font-size: 13px; color: #6a635a; width: 44px; text-align: right; flex-shrink: 0; }
+    .fam b { font-size: 18px; font-weight: 700; color: #1c1a17; }
+
+    .bloom { position: absolute; z-index: 3; pointer-events: none; filter: drop-shadow(0 6px 10px rgba(120,60,70,.12)); }
+    .cover .bloom-tl { width: 80vw; max-width: 350px; left: -13vw; top: -5vh; transform: rotate(-10deg); }
+    .cover .bloom-tr { width: 38vw; max-width: 170px; right: -4vw; top: 6vh; transform: rotate(12deg); opacity: .96; }
+    .page2 .bloom-r { width: 44vw; max-width: 200px; right: -14vw; top: -30px; transform: rotate(20deg); opacity: .95; }
+    .photo-bloom { position: absolute; width: 120px; z-index: 3; pointer-events: none; }
+    .photo-bloom.a { right: -46px; top: -40px; transform: rotate(-10deg); }
+    .photo-bloom.b { left: -50px; bottom: -34px; width: 100px; transform: rotate(160deg); }
+    /* 두 번째 장 */
+    .page2 { position: relative; padding: 64px 26px 56px; overflow: hidden; text-align: left; }
+    .page2 .wm { height: 150px; opacity: .07; }
+    .page2 .mountains { bottom: 90px; opacity: .3; }
+    .page2 .plum-r { position: absolute; left: auto; right: -150px; top: 38%; width: 330px; transform: scaleX(-1); z-index: 1; }
+    .page2 .cl3 { left: 14px; top: 28px; width: 92px; transform: scaleX(-1); }
+    .page2 .lp4 { right: 60px; top: 40px; width: 22px; }
+    .page2 .lp5 { right: 24px; bottom: 120px; width: 22px; }
+    .page2 > .greet, .page2 > .venue-name, .page2 > .info, .page2 > .btns { position: relative; z-index: 2; }
+    .greet { font-family: 'Nanum Myeongjo', serif; font-size: 15.5px; line-height: 2.1; padding-right: 10px; padding-top: 30px; color: #2a2723; word-break: keep-all; }
+    .greet em { font-style: normal; color: var(--red); font-weight: 700; }
+    .venue-name { margin-top: 34px; font-family: 'HanseokbongB', serif; font-size: 25px; font-weight: 400; color: #1c1a17; }
+    .info { margin-top: 12px; font-family: 'Noto Sans KR', sans-serif; font-size: 14.5px; line-height: 1.8; color: #2a2723; }
+    .info div { display: flex; align-items: flex-start; }
+    .info .k { width: 56px; color: #6a635a; flex-shrink: 0; letter-spacing: 1px; }
+    .info .c { width: 16px; color: #9a9184; flex-shrink: 0; }
+    .info .v { flex: 1; }
+    .info .v a { color: inherit; text-decoration: none; }
+    .info .v .tel { display: flex; gap: 10px; }
+    .info .v .tel span { color: #6a635a; width: 100px; flex-shrink: 0; white-space: nowrap; }
+    .page2 .btns { margin-top: 22px; }
+
     .scroll-hint { position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%); z-index: 5;
       display: flex; align-items: center; gap: 8px; padding: 9px 16px 9px 18px; border-radius: 30px;
       background: rgba(255,252,246,.92); border: 1px solid rgba(31,29,26,.18); box-shadow: 0 4px 14px rgba(0,0,0,.14);
@@ -108,7 +139,7 @@
     .section { padding: 64px 28px; text-align: center; position: relative; }
     .section + .section { border-top: 1px solid var(--line); }
     .eyebrow { font-family: 'Noto Sans KR', sans-serif; font-size: 11px; letter-spacing: 5px; color: var(--red); margin-bottom: 14px; }
-    .h2 { font-family: 'Nanum Brush Script', cursive; font-size: 40px; line-height: 1; color: var(--ink); margin-bottom: 26px; }
+    .h2 { font-family: 'HanseokbongR', serif; font-size: 32px; line-height: 1; color: var(--ink); margin-bottom: 26px; }
     .orn { width: 120px; margin: 0 auto 26px; display: block; }
 
     /* 사진 */
@@ -124,7 +155,7 @@
       border: 4px solid #fff; background: linear-gradient(135deg,#efe6d4,#e0d3b8); color: var(--ink-3);
       font-family: 'Noto Sans KR', sans-serif; font-size: 13px; line-height: 1.7; box-shadow: 0 12px 30px rgba(31,29,26,.18);
     }
-    .photo-caption { margin-top: 26px; font-family: 'Nanum Brush Script', cursive; font-size: 30px; color: var(--ink-2); }
+    .photo-caption { margin-top: 26px; font-family: 'Nanum Myeongjo', serif; font-size: 17px; letter-spacing: 1px; color: var(--ink-2); }
 
     /* 모시는 글 */
     .greeting { font-size: 15.5px; line-height: 2.3; color: var(--ink-2); word-break: keep-all; }
@@ -216,7 +247,7 @@
     .pnotes b { font-weight: 500; color: var(--ink); }
 
     .footer { padding: 50px 28px 60px; text-align: center; position: relative; }
-    .footer .brush { font-size: 32px; margin-top: 0; }
+    .footer .brush { font-family: 'HanseokbongR', serif; font-size: 30px; margin-top: 0; }
     .footer p { font-family: 'Noto Sans KR', sans-serif; font-size: 12px; color: var(--ink-3); margin-top: 16px; line-height: 1.8; }
     .footer .mountains { position: absolute; bottom: 0; opacity: .6; }
 
@@ -331,6 +362,28 @@
 <use href="#blossomSide" transform="translate(100 60) rotate(150) scale(.85)"/>
 
 </g>
+<g id="plumBranchC">
+
+<use href="#branch"/>
+<use href="#blossom" transform="translate(92 6) scale(1.15)"/>
+<use href="#blossomSide" transform="translate(74 30) rotate(-30)"/>
+<use href="#bud" transform="translate(48 -4) rotate(-15)"/>
+
+<use href="#blossom" transform="translate(344 110) scale(.95) rotate(50)"/>
+<use href="#bud" transform="translate(362 104) rotate(40)"/>
+<use href="#blossom" transform="translate(132 96) scale(1.0) rotate(-20)"/>
+<use href="#bud2" transform="translate(162 150)"/>
+<use href="#blossomSide" transform="translate(160 128) rotate(-100)"/>
+<use href="#blossom" transform="translate(238 180) scale(1.15) rotate(-25)"/>
+<use href="#blossom" transform="translate(264 222) scale(.9) rotate(20)"/>
+<use href="#bud" transform="translate(224 156) rotate(-30)"/>
+<use href="#blossom" transform="translate(304 130) scale(.9) rotate(30)"/>
+<use href="#bud" transform="translate(314 96) rotate(30)"/>
+<use href="#blossom" transform="translate(32 26) scale(.8) rotate(-40)"/>
+<use href="#bud2" transform="translate(14 22)"/>
+<use href="#blossomSide" transform="translate(100 60) rotate(150) scale(.85)"/>
+
+</g>
 
   <linearGradient id="mBody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a3f47"/><stop offset=".45" stop-color="#1c2025"/><stop offset="1" stop-color="#0a0c0f"/></linearGradient>
   <linearGradient id="mHead" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#454a52"/><stop offset=".5" stop-color="#1e2227"/><stop offset="1" stop-color="#0b0d10"/></linearGradient>
@@ -393,6 +446,29 @@
       <path d="M96 129 C 91 129, 87 131, 85 134 M96 129 C 97 133, 99 136, 101 138 M96 129 C 93 133, 91 136, 90 139 M96 129 C 99 129, 102 130, 104 132"/>
     </g>
   </g>
+
+    <filter id="washEdge" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency=".045" numOctaves="3" seed="9" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="16" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feGaussianBlur in="d" stdDeviation="2.2"/>
+    </filter>
+    <radialGradient id="washG" cx="48%" cy="46%" r="52%">
+      <stop offset="0" stop-color="#d8d1c3" stop-opacity=".42"/>
+      <stop offset=".55" stop-color="#d0c9ba" stop-opacity=".46"/>
+      <stop offset=".88" stop-color="#c7bfaf" stop-opacity=".42"/>
+      <stop offset="1" stop-color="#bbb3a2" stop-opacity=".2"/>
+    </radialGradient>
+    <g id="washG2">
+      <path d="M160 16 C 236 4, 310 60, 306 152 C 302 240, 244 310, 156 306 C 66 302, 8 242, 14 150 C 20 62, 86 28, 160 16Z" fill="url(#washG)" filter="url(#washEdge)"/>
+      <path d="M170 60 C 226 56, 262 100, 256 160 C 250 220, 200 256, 150 250 C 96 244, 62 196, 70 140 C 78 88, 118 64, 170 60Z" fill="#a89f8e" fill-opacity=".10" filter="url(#washEdge)"/>
+    </g>
+<g id="cloudG" fill="none" stroke="#8c8375" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M46 40 A7 7 0 1 1 50.8 27.9 A10 10 0 1 1 69.2 27.9 A7 7 0 1 1 74 40 C 66 41.5, 54 41.5, 46 40 Z" fill="#8c8375" fill-opacity=".06"/>
+  <path d="M60.0 25.5 L60.3 25.6 L60.6 25.6 L60.9 25.6 L61.2 25.4 L61.5 25.1 L61.8 24.8 L61.9 24.3 L62.0 23.9 L61.9 23.3 L61.7 22.8 L61.3 22.4 L60.8 22.0 L60.2 21.8 L59.5 21.6 L58.8 21.7 L58.1 21.9 L57.5 22.4 L56.9 22.9 L56.5 23.7 L56.3 24.5 L56.3 25.4 L56.5 26.3 L56.9 27.2 L57.5 27.9 L58.3 28.5 L59.3 29.0 L60.4 29.1 L61.5 29.0 L62.6 28.7 L63.6 28.1 L64.4 27.2 L65.1 26.1 L65.4 24.9 L65.5 23.6 L65.3 22.3 L64.7 21.1 L63.9 19.9 L62.8 19.0 L61.5 18.4 L60.0 18.1"/><path d="M46.0 34.3 L46.2 34.4 L46.4 34.4 L46.6 34.3 L46.9 34.3 L47.1 34.1 L47.3 33.9 L47.4 33.6 L47.5 33.3 L47.5 33.0 L47.4 32.6 L47.3 32.3 L47.0 32.0 L46.7 31.7 L46.3 31.5 L45.9 31.4 L45.5 31.4 L45.0 31.5 L44.5 31.7 L44.1 32.0 L43.8 32.4 L43.5 32.8 L43.3 33.4 L43.3 34.0 L43.4 34.5 L43.6 35.1 L43.9 35.7 L44.4 36.1 L44.9 36.5 L45.6 36.7 L46.3 36.8 L47.0 36.8 L47.7 36.6 L48.4 36.2 L49.0 35.7 L49.4 35.1 L49.8 34.3 L49.9 33.5 L49.9 32.7 L49.8 31.8 L49.4 31.0"/><path d="M74.0 34.3 L73.8 34.4 L73.6 34.4 L73.4 34.3 L73.1 34.3 L72.9 34.1 L72.7 33.9 L72.6 33.6 L72.5 33.3 L72.5 33.0 L72.6 32.6 L72.7 32.3 L73.0 32.0 L73.3 31.7 L73.7 31.5 L74.1 31.4 L74.5 31.4 L75.0 31.5 L75.5 31.7 L75.9 32.0 L76.2 32.4 L76.5 32.8 L76.7 33.4 L76.7 34.0 L76.6 34.5 L76.4 35.1 L76.1 35.7 L75.6 36.1 L75.1 36.5 L74.4 36.7 L73.7 36.8 L73.0 36.8 L72.3 36.6 L71.6 36.2 L71.0 35.7 L70.6 35.1 L70.2 34.3 L70.1 33.5 L70.1 32.7 L70.2 31.8 L70.6 31.0"/>
+  <path d="M75 40.5 c 12 -1 22 3 34 10" stroke-width="1"/>
+  <path d="M70 43 c 10 0 18 3 28 9" stroke-width=".9" opacity=".8"/>
+  <path d="M45 40.5 c -8 -.5 -14 1.5 -20 5" stroke-width="1"/>
+</g>
     <!-- 장식 선 -->
     <g id="orn" fill="none" stroke="#a98a4f" stroke-width="1">
       <line x1="0" y1="10" x2="44" y2="10"/><line x1="76" y1="10" x2="120" y2="10"/>
@@ -404,33 +480,61 @@
 <div class="container">
 
   <div class="content">
-    <!-- ───── 표지 ───── -->
+    <!-- ───── 표지 (샘플 분석 기반) ───── -->
     <section class="cover">
       <div class="petals" id="petals"></div>
-
-      <svg class="plum" viewBox="-30 -30 400 300" aria-hidden="true"><use href="#plumBranch"/></svg>
-
-      <svg class="seal" viewBox="0 0 46 46" aria-hidden="true">
-        <rect x="2" y="2" width="42" height="42" rx="4" fill="#b7302c"/>
-        <rect x="6" y="6" width="34" height="34" rx="2" fill="none" stroke="#f6e7d4" stroke-width="1.2" stroke-opacity=".8"/>
-        <text x="23" y="21" text-anchor="middle" font-family="'Noto Serif KR',serif" font-size="14" font-weight="900" fill="#f6e7d4">招</text>
-        <text x="23" y="37" text-anchor="middle" font-family="'Noto Serif KR',serif" font-size="14" font-weight="900" fill="#f6e7d4">待</text>
-      </svg>
+      <div class="wm" aria-hidden="true"><span>다</span><span>늘</span><span>항</span><span>오</span><span>구</span><span>는</span><span>경</span><span>은</span><span>하</span><span>솔</span><span>제</span><span>늘</span><span>한</span><span>주</span><span>네</span><span>입</span><span>양</span><span>오</span><span>하</span><span>다</span></div>
+      <svg class="mountains" viewBox="0 40 440 160" preserveAspectRatio="none" aria-hidden="true"><use href="#mountainsG"/></svg>
+      <img class="bloom bloom-tl" src="images/blossom.webp" alt="" aria-hidden="true">
+      <img class="bloom bloom-tr" src="images/sprig.webp" alt="" aria-hidden="true">
+      <svg class="cloud cl1" viewBox="0 0 120 60" aria-hidden="true"><use href="#cloudG"/></svg>
+      <svg class="cloud cl2" viewBox="0 0 120 60" aria-hidden="true"><use href="#cloudG"/></svg>
 
       <div class="cover-inner">
-        <div class="hanja-wrap">
-          <svg class="ink-blot" viewBox="0 0 200 200" aria-hidden="true">
-            <path d="M100 12 C150 5 195 45 190 100 C185 160 140 195 95 188 C40 180 5 140 12 90 C18 40 55 18 100 12Z" fill="url(#inkG)"/>
-            <path d="M100 30 C140 25 175 60 170 100 C165 145 135 172 98 168 C55 163 28 130 32 92 C36 50 65 34 100 30Z" fill="#2f2b27" fill-opacity=".06"/>
-          </svg>
-          <div class="hanja">古稀宴<small>고 희 연</small></div>
+        <div class="wash-wrap">
+          <svg class="wash" viewBox="0 0 320 320" aria-hidden="true"><use href="#washG2"/></svg>
+          <div class="title"><span class="t1"><b id="c-name">임대순</b> 아버님</span><span class="t2">고희연에 모십니다</span></div>
         </div>
-        <div class="brush"><b id="c-name">임대순</b> 아버님의 고희연에<br>소중한 분들을 모십니다</div>
-        <p class="cover-date"><strong id="c-date">2026년 10월 4일 일요일</strong> <span id="c-time">오후 5시</span><br><span id="c-place">경복궁 한옥마을점 영빈관 (인천 송도)</span></p>
+        <p class="venue" id="c-place">경복궁 한옥마을점 영빈관</p>
+        <p class="when"><span id="c-date">2026년 10월 4일 일요일</span> <span id="c-time">오후 5시</span></p>
+        <div class="fam">
+          <div><span>장녀</span><b>임현정</b></div><div><span>사위</span><b>고재일</b></div>
+          <div><span>장남</span><b>임현우</b></div><div class="empty"></div>
+          <div><span>막내딸</span><b>임현경</b></div><div><span>사위</span><b>조규일</b></div>
+        </div>
       </div>
-
-      <svg class="mountains" viewBox="0 40 440 160" preserveAspectRatio="none" aria-hidden="true"><use href="#mountainsG"/></svg>
       <div class="scroll-hint">아래로 넘겨 보세요<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 5 L7 10 L12 5" fill="none" stroke="var(--red)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </section>
+
+    <!-- ───── 두 번째 장: 모시는 글 + 약도 + 안내 (샘플 우측) ───── -->
+    <section class="page2 reveal">
+      <div class="wm" aria-hidden="true"><span>지</span><span>은</span><span>하</span><span>구</span><span>양</span><span>제</span><span>늘</span><span>다</span><span>솔</span><span>네</span><span>오</span><span>경</span><span>주</span><span>는</span><span>항</span></div>
+      <svg class="mountains" viewBox="0 40 440 160" preserveAspectRatio="none" aria-hidden="true"><use href="#mountainsG"/></svg>
+      <img class="bloom bloom-r" src="images/blossom.webp" alt="" aria-hidden="true">
+      <svg class="cloud cl3" viewBox="0 0 120 60" aria-hidden="true"><use href="#cloudG"/></svg>
+
+      <p class="greet">
+        가내 두루 평안하시길 기원합니다.<br>
+        저희를 낳아주시고 한없는 사랑으로 길러주신 아버지 <em>임대순</em> 님의 칠순을 맞이하여
+        저희가 작은 정성을 모아 축하의 자리를 마련하였습니다.<br>
+        오늘이 있기까지 긴 세월 동안 곁에서 도와주시고 두터운 정을 쌓아오신 어른, 친지분들을
+        모시고자 하오니 부디 오셔서 축하해 주시면 감사하겠습니다.
+      </p>
+
+
+      <div class="venue-name" id="i-place">경복궁 한옥마을점 (영빈관)</div>
+      <div class="info">
+        <div><span class="k">주　소</span><span class="c">:</span><span class="v" id="i-addr">인천 연수구 테크노파크로 180<br>(송도 한옥마을)</span></div>
+        <div><span class="k">일　시</span><span class="c">:</span><span class="v" id="i-date">2026년 10월 4일 (일) 오후 05:00</span></div>
+        <div><span class="k">주차장</span><span class="c">:</span><span class="v">한옥마을 전용 주차장 · 만차 시 센트럴파크 주차장<br>(걸어서 3분 이내, 아래 주차 안내 참고)</span></div>
+        <div><span class="k">문　의</span><span class="c">:</span><span class="v" id="i-tels"></span></div>
+      </div>
+      <div class="btns">
+        <a id="m-kakao" href="#" target="_blank" class="btn btn-kakao">카카오맵</a>
+        <a id="m-naver" href="#" target="_blank" class="btn btn-naver">네이버지도</a>
+        <a id="m-tmap" href="#" target="_blank" class="btn btn-tmap">티맵 길찾기</a>
+        <button type="button" class="btn btn-share" onclick="copyText(EVENT.addr.replace(/\n/g,' '),'주소가 복사되었습니다')">주소 복사</button>
+      </div>
     </section>
 
     <!-- ───── 사진 ───── -->
@@ -441,39 +545,12 @@
         <svg class="photo-ring" viewBox="0 0 100 100" aria-hidden="true">
           <circle cx="50" cy="50" r="47" fill="none" stroke="#2f2a25" stroke-width="1.6" stroke-dasharray="180 40 60 20" stroke-linecap="round" opacity=".7"/>
           <circle cx="50" cy="50" r="49" fill="none" stroke="#a98a4f" stroke-width=".6" opacity=".7"/>
-          <use href="#blossom" transform="translate(86 20) scale(.55)"/>
-          <use href="#blossomSide" transform="translate(94 33) scale(.5) rotate(60)"/>
-          <use href="#blossom" transform="translate(12 84) scale(.48) rotate(30)"/>
-          <use href="#bud" transform="translate(4 74) scale(.5) rotate(-30)"/>
         </svg>
+        <img class="photo-bloom a" src="images/blossom.webp" alt="" aria-hidden="true"><img class="photo-bloom b" src="images/blossom.webp" alt="" aria-hidden="true">
         <img class="photo" src="images/main-photo.jpg" alt="부모님 사진" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <div class="photo-fallback">images/main-photo.jpg<br>사진을 넣어주세요</div>
       </div>
       <p class="photo-caption">일흔 해, 고맙고 또 고맙습니다</p>
-    </section>
-
-    <!-- ───── 모시는 글 ───── -->
-    <section class="section reveal">
-      <p class="eyebrow">INVITATION</p>
-      <h2 class="h2">모시는 글</h2>
-      <p class="greeting">
-        꽃길만 걸으시길 바라는 마음으로<br>
-        아버님의 <em>일흔 번째 생신</em>을 맞이하여<br>
-        가족과 친지, 소중한 분들을 모시고<br>
-        작은 축하의 자리를 마련하였습니다.<br><br>
-        바쁘시더라도 부디 참석하시어<br>
-        자리를 빛내주시면 감사하겠습니다.
-      </p>
-      <div class="poem">지나온 일흔 해의 발자국마다<br>사랑이 피었습니다</div>
-
-      <div class="family">
-        <div><span>장녀</span><strong>임현정</strong></div>
-        <div><span>사위</span><strong>고재일</strong></div>
-        <div><span>장남</span><strong>임현우</strong></div>
-        <div></div>
-        <div><span>막내딸</span><strong>임현경</strong></div>
-        <div><span>사위</span><strong>조규일</strong></div>
-      </div>
     </section>
 
     <!-- ───── 일시 ───── -->
@@ -488,23 +565,6 @@
       </div>
       <p class="dday" id="dday"></p>
       <div class="count" id="count"></div>
-    </section>
-
-    <!-- ───── 오시는 길 ───── -->
-    <section class="section reveal">
-      <p class="eyebrow">LOCATION</p>
-      <h2 class="h2">오시는 길</h2>
-      <div class="info-card">
-        <div class="info-row"><div class="k">일시</div><div class="v"><strong id="i-date">2026년 10월 4일 (일) 오후 05:00</strong></div></div>
-        <div class="info-row"><div class="k">장소</div><div class="v"><strong id="i-place">경복궁 한옥마을점 (영빈관)</strong><span id="i-addr">인천 연수구 테크노파크로 180<br>(송도 한옥마을)</span></div></div>
-        <div class="info-row"><div class="k">문의</div><div class="v" id="i-tels"></div></div>
-        <div class="btns">
-          <a id="m-kakao" href="#" target="_blank" class="btn btn-kakao">카카오맵</a>
-          <a id="m-naver" href="#" target="_blank" class="btn btn-naver">네이버지도</a>
-          <a id="m-tmap" href="#" target="_blank" class="btn btn-tmap">티맵 길찾기</a>
-          <button type="button" class="btn btn-share" onclick="copyText(EVENT.addr.replace(/\n/g,' '),'주소가 복사되었습니다')">주소 복사</button>
-        </div>
-      </div>
     </section>
 
 
@@ -587,7 +647,7 @@
   document.getElementById('c-name').textContent = EVENT.name;
   document.getElementById('c-date').textContent = `${y}년 ${m+1}월 ${day}일 ${w}요일`;
   document.getElementById('c-time').textContent = timeStr;
-  document.getElementById('c-place').textContent = EVENT.place.replace(' (영빈관)',' 영빈관') + ' (인천 송도)';
+  document.getElementById('c-place').textContent = EVENT.place.replace(' (영빈관)',' 영빈관');
   document.getElementById('d-big').textContent = `${y}.${String(m+1).padStart(2,'0')}.${String(day).padStart(2,'0')}`;
   document.getElementById('d-sub').textContent = `${w}요일 ${timeStr}`;
   document.getElementById('i-date').textContent = `${y}년 ${m+1}월 ${day}일 (${w}) ${timeStr2}`;
@@ -626,7 +686,7 @@
   for (let i = 0; i < 14; i++) {
     const s = document.createElementNS('http://www.w3.org/2000/svg','svg');
     s.setAttribute('viewBox','-8 -8 16 16'); s.classList.add('petal');
-    s.innerHTML = '<ellipse rx="4" ry="6" fill="url(#pG)"/>';
+    s.innerHTML = '<ellipse rx="4" ry="6" fill="#f3b7c3" fill-opacity=".85"/>';
     s.style.left = Math.random()*100 + '%';
     s.style.animationDuration = (7 + Math.random()*7) + 's';
     s.style.animationDelay = (-Math.random()*12) + 's';

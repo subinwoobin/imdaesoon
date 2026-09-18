@@ -1,0 +1,19 @@
+# 스킬 설치 파일 (사이트와 무관)
+.agents/
+.claude/
+skills-lock.json
+
+# 작업용 스크린샷·메모
+Claude outputs/
+새 텍스트 문서.txt
+
+# 원본 폰트(용량 큼) — woff2만 올림
+fonts/*.ttf
+fonts/*.otf
+fonts/KCCEunyoung.woff2
+fonts/NanumBrush.woff2
+
+# 원본 소재 이미지 — 가공본(blossom.webp, sprig.webp 등)만 올림
+images/*_1920.jpg
+images/*_1920.png
+images/main-photo-color.jpg
