@@ -94,29 +94,19 @@
     .photo-bloom.a { right: -46px; top: -40px; transform: rotate(-10deg); }
     .photo-bloom.b { left: -50px; bottom: -34px; width: 100px; transform: rotate(160deg); }
     /* 두 번째 장 */
-    .page2 { position: relative; padding: 64px 26px 56px; overflow: hidden; text-align: left; }
+    .page2 { position: relative; padding: 64px 26px 64px; overflow: hidden; text-align: left; }
     .page2 .wm { height: 150px; opacity: .07; }
     .page2 .mountains { bottom: 90px; opacity: .3; }
     .page2 .plum-r { position: absolute; left: auto; right: -150px; top: 38%; width: 330px; transform: scaleX(-1); z-index: 1; }
     .page2 .cl3 { left: 14px; top: 28px; width: 92px; transform: scaleX(-1); }
     .page2 .lp4 { right: 60px; top: 40px; width: 22px; }
     .page2 .lp5 { right: 24px; bottom: 120px; width: 22px; }
-    .page2 > .p2head, .page2 > .greet, .page2 > .famwrap, .page2 > .venue-name, .page2 > .info, .page2 > .btns { position: relative; z-index: 2; }
+    .page2 > .p2head, .page2 > .greet, .page2 > .famwrap { position: relative; z-index: 2; }
     .famwrap { text-align: center; }
     .p2head { text-align: center; padding-top: 44px; }
     .p2head .h2 { margin-bottom: 0; }
     .greet { font-family: 'Nanum Myeongjo', serif; font-size: 15.5px; line-height: 2.1; padding-right: 10px; padding-top: 34px; color: #2a2723; word-break: keep-all; }
     .greet em { font-style: normal; color: #1c1a17; font-weight: 700; }
-    .venue-name { margin-top: 34px; font-family: 'HanseokbongB', serif; font-size: 23px; font-weight: 400; color: #1c1a17; }
-    .info { margin-top: 12px; font-family: 'Noto Sans KR', sans-serif; font-size: 14.5px; line-height: 1.8; color: #2a2723; }
-    .info div { display: flex; align-items: flex-start; }
-    .info .k { width: 56px; color: #6a635a; flex-shrink: 0; letter-spacing: 1px; }
-    .info .c { width: 16px; color: #9a9184; flex-shrink: 0; }
-    .info .v { flex: 1; }
-    .info .v a { color: inherit; text-decoration: none; }
-    .info .v .tel { display: flex; gap: 10px; }
-    .info .v .tel span { color: #6a635a; width: 100px; flex-shrink: 0; white-space: nowrap; }
-    .page2 .btns { margin-top: 22px; }
 
     .scroll-hint { position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%); z-index: 5;
       display: flex; align-items: center; gap: 8px; padding: 9px 16px 9px 18px; border-radius: 30px;
@@ -533,7 +523,7 @@
         모시고자 하오니 부디 오셔서 축하해 주시면 감사하겠습니다.
       </p>
 
-      <div class="famwrap"><div class="family">
+      <div class="famwrap"><div class="poem">지나온 일흔 해의 발자국마다<br>사랑이 피었습니다</div><div class="family">
         <div><span>장녀</span><strong>임현정</strong></div>
         <div><span>사위</span><strong>고재일</strong></div>
         <div><span>장남</span><strong>임현우</strong></div>
@@ -543,19 +533,6 @@
       </div></div>
 
 
-      <div class="venue-name" id="i-place">경복궁 한옥마을점 (영빈관)</div>
-      <div class="info">
-        <div><span class="k">주　소</span><span class="c">:</span><span class="v" id="i-addr">인천 연수구 테크노파크로 180<br>(송도 한옥마을)</span></div>
-        <div><span class="k">일　시</span><span class="c">:</span><span class="v" id="i-date">2026년 10월 4일 (일) 오후 05:00</span></div>
-        <div><span class="k">주차장</span><span class="c">:</span><span class="v">한옥마을 전용 주차장 · 만차 시 센트럴파크 주차장<br>(걸어서 3분 이내, 아래 주차 안내 참고)</span></div>
-        <div><span class="k">문　의</span><span class="c">:</span><span class="v" id="i-tels"></span></div>
-      </div>
-      <div class="btns">
-        <a id="m-kakao" href="#" target="_blank" class="btn btn-kakao">카카오맵</a>
-        <a id="m-naver" href="#" target="_blank" class="btn btn-naver">네이버지도</a>
-        <a id="m-tmap" href="#" target="_blank" class="btn btn-tmap">티맵 길찾기</a>
-        <button type="button" class="btn btn-share" onclick="copyText(EVENT.addr.replace(/\n/g,' '),'주소가 복사되었습니다')">주소 복사</button>
-      </div>
     </section>
 
     <!-- ───── 일시 ───── -->
@@ -572,6 +549,23 @@
       <div class="count" id="count"></div>
     </section>
 
+
+    <!-- ───── 오시는 길 ───── -->
+    <section class="section reveal">
+      <p class="eyebrow">LOCATION</p>
+      <h2 class="h2">오시는 길</h2>
+      <div class="info-card">
+        <div class="info-row"><div class="k">일시</div><div class="v"><strong id="i-date">2026년 10월 4일 (일) 오후 05:00</strong></div></div>
+        <div class="info-row"><div class="k">장소</div><div class="v"><strong id="i-place">경복궁 한옥마을점 (영빈관)</strong><span id="i-addr">인천 연수구 테크노파크로 180<br>(송도 한옥마을)</span></div></div>
+        <div class="info-row"><div class="k">문의</div><div class="v" id="i-tels"></div></div>
+        <div class="btns">
+          <a id="m-kakao" href="#" target="_blank" class="btn btn-kakao">카카오맵</a>
+          <a id="m-naver" href="#" target="_blank" class="btn btn-naver">네이버지도</a>
+          <a id="m-tmap" href="#" target="_blank" class="btn btn-tmap">티맵 길찾기</a>
+          <button type="button" class="btn btn-share" onclick="copyText(EVENT.addr.replace(/\n/g,' '),'주소가 복사되었습니다')">주소 복사</button>
+        </div>
+      </div>
+    </section>
 
     <!-- ───── 주차 안내 ───── -->
     <section class="section reveal">
